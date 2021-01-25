@@ -90,6 +90,7 @@ section {
   background-color: #084f65;
   color: #fff;
   position: relative;
+  z-index: 1;
   &:before {
     content: "";
     width: 100%;
@@ -128,6 +129,7 @@ section {
   padding: 30px;
   display: flex;
   align-items: stretch;
+  overflow-x: hidden;
   .max-width {
     display: flex;
     align-items: stretch;
@@ -295,6 +297,7 @@ b {
 }
 
 .lithostroto {
+  overflow: hidden;
   background-image: linear-gradient(to bottom, #106a87f2 50%, #095d77f2 50%),
     url(./assets/tripBg.png);
   background-blend-mode: multiply;
@@ -561,5 +564,29 @@ footer {
     right: 70px;
     top: 0;
     transform: translateY(-50%);
+    cursor: pointer;
+  }
+}
+.indicators {
+  position: fixed;
+  top: 50%;
+  right: 30px;
+  width: 10px;
+  height: 130px;
+  z-index: 2;
+  transform: translateY(-50%);
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  > div {
+    background-color: #fff;
+    opacity: 0.5;
+    width: 10px;
+    height: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+    &.active {
+      opacity: 1;
+    }
   }
 }

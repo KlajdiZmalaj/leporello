@@ -62,7 +62,7 @@ $(document).ready(() => {
     };
 
     var updateTransformStyle = function (x, y) {
-      var style = "rotateX(" + x * 5 + "deg) rotateY(" + y * 52 + "deg)";
+      var style = "rotateX(" + x * 6 + "deg) rotateY(" + y * 52 + "deg)";
       inner.style.transform = style;
       inner.style.webkitTransform = style;
       inner.style.mozTranform = style;
@@ -82,6 +82,7 @@ $(document).ready(() => {
   var timeline2 = new TimelineMax();
   var timeline5 = new TimelineMax();
   var timeline6 = new TimelineMax();
+  var timeline8 = new TimelineMax();
   var controller = new ScrollMagic.Controller();
 
   /* ****************** Timelines ******************/
@@ -183,6 +184,7 @@ $(document).ready(() => {
     1,
     {
       y: "0%",
+      ease: Power2.easeInOut,
     },
     "0"
   );
@@ -191,6 +193,60 @@ $(document).ready(() => {
     1,
     {
       y: "-50%",
+      ease: Power2.easeInOut,
+    },
+    "0"
+  );
+  timeline8.from(
+    ".labart .labart--col:nth-child(2) img:nth-child(2)",
+    1,
+    {
+      y: -10,
+      x: 20,
+      ease: Power2.easeInOut,
+    },
+    "0"
+  );
+  timeline8.fromTo(
+    ".labart .labart--col:nth-child(2) img:nth-child(3)",
+    1,
+    {
+      y: 10,
+      x: 400,
+      ease: Power2.easeInOut,
+    },
+    {
+      y: 0,
+      x: 0,
+      ease: Power2.easeInOut,
+    },
+    "0"
+  );
+  timeline8.fromTo(
+    ".labart .labart--col:nth-child(1) > div:nth-child(2)",
+    1,
+    {
+      x: -100,
+      ease: Power2.easeInOut,
+    },
+    {
+      x: 0,
+      ease: Power2.easeInOut,
+    },
+    "0"
+  );
+  timeline8.fromTo(
+    ".labart .labart--col:nth-child(1) > img",
+    1,
+    {
+      x: -1000,
+      opacity: 0,
+      ease: Power1.easeInOut,
+    },
+    {
+      x: 0,
+      opacity: 1,
+      ease: Power1.easeInOut,
     },
     "0"
   );
@@ -259,12 +315,47 @@ $(document).ready(() => {
     triggerHook: 0,
     offset: "0",
   })
-    .addIndicators({
-      name: " scene6",
-      colorStart: "#222",
-      colorEnd: "#222",
-    })
+    // .addIndicators({
+    //   name: " scene6",
+    //   colorStart: "#222",
+    //   colorEnd: "#222",
+    // })
     .setPin("#section6")
     .setTween(timeline6)
     .addTo(controller);
+
+  new ScrollMagic.Scene({
+    triggerElement: "#section8",
+    duration: "30%",
+    triggerHook: 0,
+    offset: "0",
+  })
+    // .addIndicators({
+    //   name: " scene8",
+    //   colorStart: "#222",
+    //   colorEnd: "#222",
+    // })
+    .setTween(timeline8)
+    .addTo(controller);
+});
+function scollInto(section) {
+  var element = document.getElementById(section);
+  element.scrollIntoView({
+    behavior: "smooth",
+    block: "start",
+    inline: "nearest",
+  });
+}
+$(document).ready(() => {
+  $("[data-set]").click((e) => {
+    $("[data-set]").each((ind, el) => {
+      $(el).removeClass("active");
+    });
+    $(e.target).addClass("active");
+    scollInto($(e.target).attr("data-set"));
+  });
+});
+
+$("footer > img").on("click", () => {
+  scollInto("section1");
 });
