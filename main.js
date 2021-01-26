@@ -285,15 +285,15 @@ $(document).ready(() => {
 
   new ScrollMagic.Scene({
     triggerElement: "#section5",
-    duration: "100%",
+    duration: "40%",
     triggerHook: 0.2,
     offset: "0",
   })
-    // .addIndicators({
-    //   name: " scene 5",
-    //   colorStart: "#222",
-    //   colorEnd: "#222",
-    // })
+    .addIndicators({
+      name: " scene 5",
+      colorStart: "#222",
+      colorEnd: "#222",
+    })
     .setTween(timeline5)
     .addTo(controller);
 
@@ -335,6 +335,16 @@ function scollInto(section) {
   });
 }
 
+function checkScoll() {
+  if ($(window).scrollTop() > 275) {
+    $("header").addClass("fixed");
+    $(".intro").addClass("fixedHeader");
+  } else if ($(window).scrollTop() < 275) {
+    $("header").removeClass("fixed");
+    $(".intro").removeClass("fixedHeader");
+  }
+}
+
 $(document).ready(() => {
   $(".fixedBtn").on("click", () => {
     $("#leftMenu").toggleClass("active");
@@ -349,13 +359,8 @@ $(document).ready(() => {
     $(e.target).addClass("active");
     scollInto($(e.target).attr("data-set"));
   });
+  checkScoll();
   $(window).scroll(function (e) {
-    if ($(window).scrollTop() > 275) {
-      $("header").addClass("fixed");
-      $(".intro").addClass("fixedHeader");
-    } else if ($(window).scrollTop() < 275) {
-      $("header").removeClass("fixed");
-      $(".intro").removeClass("fixedHeader");
-    }
+    checkScoll();
   });
 });
