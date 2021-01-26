@@ -1,4 +1,5 @@
 (function ($) {
+  //cHJvamVjdF9ieV9rbGFqZGlfem1hbGFq
   $.fn.translate = function (options) {
     var that = this; //a reference to ourselves
     var settings = {
@@ -53,6 +54,7 @@
     return this;
   };
 })(jQuery);
+
 $(document).ready(() => {
   if (screen.width > 768) {
     (function () {
