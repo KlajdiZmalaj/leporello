@@ -289,11 +289,11 @@ $(document).ready(() => {
     triggerHook: 0.2,
     offset: "0",
   })
-    .addIndicators({
-      name: " scene 5",
-      colorStart: "#222",
-      colorEnd: "#222",
-    })
+    // .addIndicators({
+    //   name: " scene 5",
+    //   colorStart: "#222",
+    //   colorEnd: "#222",
+    // })
     .setTween(timeline5)
     .addTo(controller);
 
