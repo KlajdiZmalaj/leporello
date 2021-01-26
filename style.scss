@@ -828,6 +828,7 @@ footer {
   }
   .trip--col {
     width: 100%;
+    padding: 0;
   }
   .lithostroto {
     padding: 15px;
@@ -929,6 +930,12 @@ footer {
   }
   .labart .max-width {
     padding-bottom: 50px;
+  }
+  footer > img {
+    width: 40px;
+  }
+  footer .max-width {
+    padding: 15px;
   }
   footer .top img {
     width: 100%;
