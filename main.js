@@ -1,10 +1,8 @@
 $(document).ready(() => {
   (function () {
-    // Init
     var container = document.getElementById("section7"),
       inner = document.getElementById("innerGall");
 
-    // Mouse
     var mouse = {
       _x: 0,
       _y: 0,
@@ -24,18 +22,13 @@ $(document).ready(() => {
       },
     };
 
-    // Track the mouse position relative to the center of the container.
     mouse.setOrigin(container);
-
-    //----------------------------------------------------
 
     var counter = 0;
     var refreshRate = 10;
     var isTimeToUpdate = function () {
       return counter++ % refreshRate === 0;
     };
-
-    //----------------------------------------------------
 
     var onMouseEnterHandler = function (event) {
       update(event);
@@ -50,8 +43,6 @@ $(document).ready(() => {
         update(event);
       }
     };
-
-    //----------------------------------------------------
 
     var update = function (event) {
       mouse.updatePosition(event);
@@ -69,8 +60,6 @@ $(document).ready(() => {
       inner.style.msTransform = style;
       inner.style.oTransform = style;
     };
-
-    //--------------------------------------------------------
 
     container.onmousemove = onMouseMoveHandler;
     container.onmouseleave = onMouseLeaveHandler;
@@ -143,7 +132,6 @@ $(document).ready(() => {
         ease: Power2.easeInOut,
       };
     }
-    console.log("elObj", elObj);
     timeline2.from(el, 1, elObj, "0");
   });
   timeline2.from(
@@ -346,7 +334,14 @@ function scollInto(section) {
     inline: "nearest",
   });
 }
+
 $(document).ready(() => {
+  $(".fixedBtn").on("click", () => {
+    $("#leftMenu").toggleClass("active");
+  });
+  $("footer > img").on("click", () => {
+    scollInto("section1");
+  });
   $("[data-set]").click((e) => {
     $("[data-set]").each((ind, el) => {
       $(el).removeClass("active");
@@ -354,8 +349,13 @@ $(document).ready(() => {
     $(e.target).addClass("active");
     scollInto($(e.target).attr("data-set"));
   });
-});
-
-$("footer > img").on("click", () => {
-  scollInto("section1");
+  $(window).scroll(function (e) {
+    if ($(window).scrollTop() > 275) {
+      $("header").addClass("fixed");
+      $(".intro").addClass("fixedHeader");
+    } else if ($(window).scrollTop() < 275) {
+      $("header").removeClass("fixed");
+      $(".intro").removeClass("fixedHeader");
+    }
+  });
 });
