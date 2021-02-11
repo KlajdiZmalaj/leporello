@@ -58,7 +58,7 @@
 $(document).ready(() => {
   if (screen.width > 768) {
     (function () {
-      var container = document.getElementById("section7"),
+      var container = document.getElementById("section8"),
         inner = document.getElementById("innerGall");
 
       var mouse = {
@@ -302,13 +302,13 @@ if (screen.width > 768) {
     );
     /* ******************SCENES ******************/
     new ScrollMagic.Scene({
-      triggerElement: "#section2",
+      triggerElement: "#section3",
       duration: "1080",
       triggerHook: 0,
       offset: "0",
     })
       .setTween(timeline)
-      .setPin("#section2")
+      .setPin("#section3")
       // .addIndicators({
       //   name: "reon scene",
       //   colorStart: "red",
@@ -317,7 +317,7 @@ if (screen.width > 768) {
       .addTo(controller);
 
     new ScrollMagic.Scene({
-      triggerElement: "#section3",
+      triggerElement: "#section4",
       duration: "100%",
       triggerHook: 0.5,
       offset: "0",
@@ -332,7 +332,7 @@ if (screen.width > 768) {
       .addTo(controller);
 
     new ScrollMagic.Scene({
-      triggerElement: "#section4",
+      triggerElement: "#section5",
       duration: 1000,
       triggerHook: 0.7,
       offset: "0",
@@ -346,7 +346,7 @@ if (screen.width > 768) {
       .addTo(controller);
 
     new ScrollMagic.Scene({
-      triggerElement: "#section5",
+      triggerElement: "#section6",
       duration: "40%",
       triggerHook: 0.2,
       offset: "0",
@@ -360,7 +360,7 @@ if (screen.width > 768) {
       .addTo(controller);
 
     new ScrollMagic.Scene({
-      triggerElement: "#section6",
+      triggerElement: "#section7",
       duration: "200%",
       triggerHook: 0,
       offset: "0",
@@ -370,12 +370,12 @@ if (screen.width > 768) {
       //   colorStart: "#222",
       //   colorEnd: "#222",
       // })
-      .setPin("#section6")
+      .setPin("#section7")
       .setTween(timeline6)
       .addTo(controller);
 
     new ScrollMagic.Scene({
-      triggerElement: "#section8",
+      triggerElement: "#section9",
       duration: "30%",
       triggerHook: 0,
       offset: "0",
@@ -392,24 +392,65 @@ if (screen.width > 768) {
 
 function scollInto(section) {
   var element = document.getElementById(section);
-  element.scrollIntoView({
-    behavior: "smooth",
-    block: "start",
-    inline: "nearest",
-  });
+  if (element)
+    element.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+      inline: "nearest",
+    });
 }
-
+var activeSection = "section1";
+var sectionsTops = {
+  section1: {},
+  section2: {},
+  section3: {},
+  section4: {},
+  section5: {},
+  section6: {},
+  section7: {},
+  section8: {},
+  section9: {},
+  section10: {},
+};
+function setActiveBullet() {
+  //console.log("activated bull active");
+  $("[data-set].active").removeClass("active");
+  $(`[data-set="${activeSection}"]`).addClass("active");
+}
 function checkScoll() {
-  if ($(window).scrollTop() > 275) {
+  if ($(window).scrollTop() > 80) {
     $("header").addClass("fixed");
     $(".intro").addClass("fixedHeader");
-  } else if ($(window).scrollTop() < 275) {
+  } else if ($(window).scrollTop() < 80) {
     $("header").removeClass("fixed");
     $(".intro").removeClass("fixedHeader");
   }
+  console.log("activeSection", activeSection);
+  Object.keys(sectionsTops).forEach((key) => {
+    if (
+      sectionsTops[key]["top"] <= $(window).scrollTop() &&
+      $(window).scrollTop() <= sectionsTops[key]["bottom"]
+    ) {
+      activeSection = key;
+    }
+  });
+  setActiveBullet();
 }
 
 $(document).ready(() => {
+  window.scrollTo(0, 0);
+  $('[id*="section"]').each((ind, el) => {
+    sectionsTops[`section${ind + 1}`] = {
+      top:
+        parseInt(
+          document.querySelector(`#section${ind}`)?.getBoundingClientRect?.()
+            ?.bottom
+        ) || 80,
+      bottom: parseInt(el.getBoundingClientRect().bottom),
+    };
+    // console.log("cxa ka", el.getBoundingClientRect());
+  });
+  console.log("cxa ka", sectionsTops);
   $(".fixedBtn").on("click", () => {
     $("#leftMenu").toggleClass("active");
   });
@@ -426,5 +467,8 @@ $(document).ready(() => {
   checkScoll();
   $(window).scroll(function (e) {
     checkScoll();
+  });
+  $(".goDown").on("click", function () {
+    scollInto("section" + (parseInt(activeSection.split("section")[1]) + 1));
   });
 });
