@@ -2,7 +2,7 @@ var local = {
   downloadPdf: {
     it: "Scarica PDF",
     en: "Download PDF",
-    gr: "adadadad PDF",
+    gr: "Κατεβάστε PDF",
   },
   s1_p1: {
     it: `In molte regioni europee la cultura dell’artigianato ha una lunga tradizione. Prima della salvaguardia del patrimonio culturale e artistico, sia nel territorio italiano che in quello greco, è necessario

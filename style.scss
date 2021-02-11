@@ -65,7 +65,7 @@ header {
     border: 1px solid transparent;
     padding: 3px 10px;
     transition: 0.5s;
-
+    text-decoration: none;
     &:hover {
       border: 1px solid #084e63;
       border-radius: 3px;
@@ -74,9 +74,9 @@ header {
     img {
       margin-right: 10px;
     }
-    span {
+    a {
       position: relative;
-      top: 1px;
+      top: 2px;
     }
   }
 }
