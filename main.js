@@ -425,7 +425,7 @@ function checkScoll() {
     $("header").removeClass("fixed");
     $(".intro").removeClass("fixedHeader");
   }
-  console.log("activeSection", activeSection);
+  //console.log("activeSection", activeSection);
   Object.keys(sectionsTops).forEach((key) => {
     if (
       sectionsTops[key]["top"] <= $(window).scrollTop() &&
@@ -450,7 +450,7 @@ $(document).ready(() => {
     };
     // console.log("cxa ka", el.getBoundingClientRect());
   });
-  console.log("cxa ka", sectionsTops);
+  //console.log("cxa ka", sectionsTops);
   $(".fixedBtn").on("click", () => {
     $("#leftMenu").toggleClass("active");
   });
