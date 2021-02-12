@@ -471,4 +471,19 @@ $(document).ready(() => {
   $(".goDown").on("click", function () {
     scollInto("section" + (parseInt(activeSection.split("section")[1]) + 1));
   });
+  $(".lang > span").each((ind, el) => {
+    $(el).on("click", () => {
+      switch (ind) {
+        case 0:
+          $(".pdf a").attr("href", "./pdf/ita.pdf");
+          break;
+        case 1:
+          $(".pdf a").attr("href", "./pdf/eng.pdf");
+          break;
+        case 2:
+          $(".pdf a").attr("href", "./pdf/gr.pdf");
+          break;
+      }
+    });
+  });
 });
