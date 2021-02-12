@@ -807,6 +807,20 @@ b {
 }
 
 @media (max-width: 768px) {
+  header .pdf a {
+    text-transform: capitalize;
+  }
+  header .pdf img {
+    margin-right: 4px;
+    width: 13px;
+  }
+  .top-header .lang span {
+    padding-left: 10px;
+    text-transform: uppercase;
+    img {
+      width: 20px;
+    }
+  }
   .footerLast .max-width h1 {
     font-size: 25px;
     margin-bottom: 20px;
