@@ -807,6 +807,12 @@ b {
 }
 
 @media (max-width: 768px) {
+  #leftMenu.active + .fixedBtn {
+    left: 230px;
+  }
+  #leftMenu {
+    width: 240px;
+  }
   header .pdf a {
     text-transform: capitalize;
   }
