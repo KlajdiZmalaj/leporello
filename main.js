@@ -475,12 +475,15 @@ $(document).ready(() => {
     $(el).on("click", () => {
       switch (ind) {
         case 0:
+        case 3:
           $(".pdf a").attr("href", "./pdf/ita.pdf");
           break;
         case 1:
+        case 4:
           $(".pdf a").attr("href", "./pdf/eng.pdf");
           break;
         case 2:
+        case 5:
           $(".pdf a").attr("href", "./pdf/gr.pdf");
           break;
       }
