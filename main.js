@@ -440,8 +440,8 @@ $(document).ready(() => {
     sectionsTops[`section${ind + 1}`] = {
       top:
         parseInt(
-          document.querySelector(`#section${ind}`)?.getBoundingClientRect?.()
-            ?.bottom
+          document.querySelector(`#section${ind}`).getBoundingClientRect()
+            .bottom
         ) || 80,
       bottom: parseInt(el.getBoundingClientRect().bottom),
     };
