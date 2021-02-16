@@ -819,13 +819,27 @@ b {
   padding-bottom: 0 !important;
 }
 @media (max-width: 768px) {
+  .footerLast .max-width h3 + img {
+    width: 100%;
+    height: auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+  footer > img {
+    right: 10px;
+    top: -30px;
+  }
+  #section1 {
+    margin-top: 70px;
+  }
   header {
     position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding-left: 0;
+    z-index: 3;
     &.fixed {
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding-left: 0;
       display: flex;
       align-items: flex-start;
       justify-content: flex-start;
