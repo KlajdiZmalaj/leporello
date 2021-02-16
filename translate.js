@@ -864,24 +864,25 @@ Antonia Pellegrini, Francesca Ruggieri, Valentina Laterza, Domiziana Desiante, R
     σαφή ένδειξη της πηγής και του συγγραφέα. Δωρεάν έκδοση.`,
   },
 };
+$(document).ready(() => {
+  var translator = $("body").translate({
+    lang: "en",
+    t: local,
+  });
 
-var translator = $("body").translate({
-  lang: "en",
-  t: local,
-});
+  $(".lang span:first-child").click(() => {
+    //   console.log("clicked");
+    translator.lang("it");
+  });
+  $(".lang span:nth-child(2)").click(() => {
+    //console.log("clicked2");
+    translator.lang("en");
+  });
+  $(".lang span:nth-child(3)").click(() => {
+    //console.log("clicked2");
+    translator.lang("gr");
+  });
 
-$(".lang span:first-child").click(() => {
-  //   console.log("clicked");
-  translator.lang("it");
+  // translator.lang("it");
+  // translator.lang("en");
 });
-$(".lang span:nth-child(2)").click(() => {
-  //console.log("clicked2");
-  translator.lang("en");
-});
-$(".lang span:nth-child(3)").click(() => {
-  //console.log("clicked2");
-  translator.lang("gr");
-});
-
-// translator.lang("it");
-// translator.lang("en");

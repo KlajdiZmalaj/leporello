@@ -807,6 +807,30 @@ b {
 }
 
 @media (max-width: 768px) {
+  img.sdsd {
+    width: 100%;
+    height: auto;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+  #c1 {
+    height: auto !important;
+    width: auto !important;
+    max-width: 100%;
+  }
+  #c2 {
+    height: auto !important;
+    width: auto !important;
+    max-width: 100%;
+  }
+  #c3 {
+    height: auto !important;
+    width: auto !important;
+    max-width: 100%;
+  }
+  .intro.fixedHeader {
+    margin-top: 0;
+  }
   #leftMenu.active + .fixedBtn {
     left: 230px;
   }

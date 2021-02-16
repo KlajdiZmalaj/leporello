@@ -1,4 +1,4 @@
-(function ($) {
+$(document).ready(() => {
   //cHJvamVjdF9ieV9rbGFqZGlfem1hbGFq
   $.fn.translate = function (options) {
     var that = this; //a reference to ourselves
@@ -53,9 +53,6 @@
     });
     return this;
   };
-})(jQuery);
-
-$(document).ready(() => {
   if (screen.width > 768) {
     (function () {
       var container = document.getElementById("section8"),
