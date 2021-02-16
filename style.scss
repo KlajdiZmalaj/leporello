@@ -840,6 +840,11 @@ b {
     padding-left: 0;
     z-index: 3;
     &.fixed {
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding-left: 0;
+      z-index: 3;
       display: flex;
       align-items: flex-start;
       justify-content: flex-start;
