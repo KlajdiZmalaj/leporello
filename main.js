@@ -132,7 +132,7 @@ if (screen.width > 768) {
     var controller = new ScrollMagic.Controller();
 
     /* ****************** Timelines ******************/
-    timeline.from(
+    timeline.to(
       "#c1",
       1,
       {
@@ -142,7 +142,7 @@ if (screen.width > 768) {
       },
       "0.1"
     );
-    timeline.from(
+    timeline.to(
       "#c2",
       1,
       {
@@ -152,7 +152,7 @@ if (screen.width > 768) {
       },
       "0.2"
     );
-    timeline.from(
+    timeline.to(
       "#c3",
       1,
       {
@@ -184,23 +184,23 @@ if (screen.width > 768) {
         };
       } else if (ind == 1) {
         elObj = {
-          x: -255,
-          y: 200,
+          x: -55,
+          y: 20,
           ease: Power2.easeInOut,
         };
       }
       timeline2.from(el, 1, elObj, "0");
     });
-    timeline2.from(
-      ".greek .infos>div:nth-child(2)",
-      1,
-      {
-        x: 0,
-        y: 100,
-        ease: Power2.easeInOut,
-      },
-      "0"
-    );
+    // timeline2.from(
+    //   ".greek .infos>div:nth-child(2)",
+    //   1,
+    //   {
+    //     x: 0,
+    //     y: 100,
+    //     ease: Power2.easeInOut,
+    //   },
+    //   "0"
+    // );
 
     $(".lithostroto .lithostroto--col:nth-child(2) .imgs img").each(
       (ind, el) => {
@@ -344,7 +344,7 @@ if (screen.width > 768) {
 
     new ScrollMagic.Scene({
       triggerElement: "#section6",
-      duration: "40%",
+      duration: "100",
       triggerHook: 0.2,
       offset: "0",
     })
@@ -373,8 +373,8 @@ if (screen.width > 768) {
 
     new ScrollMagic.Scene({
       triggerElement: "#section9",
-      duration: "30%",
-      triggerHook: 0,
+      duration: "200",
+      triggerHook: 0.5,
       offset: "0",
     })
       // .addIndicators({
@@ -415,12 +415,18 @@ function setActiveBullet() {
   $(`[data-set="${activeSection}"]`).addClass("active");
 }
 function checkScoll() {
+  // console.log(
+  //   "sectionsTops",
+  //   sectionsTops,
+  //   activeSection,
+  //   $(window).scrollTop()
+  // );
   if ($(window).scrollTop() > 80) {
     $("header").addClass("fixed");
-    $(".intro").addClass("fixedHeader");
+    $("#section1").addClass("fixedHeader");
   } else if ($(window).scrollTop() < 80) {
     $("header").removeClass("fixed");
-    $(".intro").removeClass("fixedHeader");
+    $("#section1").removeClass("fixedHeader");
   }
   //console.log("activeSection", activeSection);
   Object.keys(sectionsTops).forEach((key) => {
@@ -429,6 +435,20 @@ function checkScoll() {
       $(window).scrollTop() <= sectionsTops[key]["bottom"]
     ) {
       activeSection = key;
+      if (key === "section10") {
+        $(".goDown").addClass("goUp");
+        $(".goUp").on("click", function () {
+          scollInto("section1");
+        });
+      } else {
+        $(".goUp").unbind("click");
+        $(".goDown").removeClass("goUp");
+        $(".goDown:not(.goUp)").on("click", function () {
+          scollInto(
+            "section" + (parseInt(activeSection.split("section")[1]) + 1)
+          );
+        });
+      }
     }
   });
   setActiveBullet();
@@ -467,9 +487,10 @@ $(document).ready(() => {
   $(window).scroll(function (e) {
     checkScoll();
   });
-  $(".goDown").on("click", function () {
+  $(".goDown:not(.goUp)").on("click", function () {
     scollInto("section" + (parseInt(activeSection.split("section")[1]) + 1));
   });
+
   $(".lang > span").each((ind, el) => {
     $(el).on("click", () => {
       switch (ind) {

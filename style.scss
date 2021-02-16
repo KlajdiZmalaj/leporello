@@ -225,9 +225,7 @@ section {
   display: flex;
   flex-flow: column;
   justify-content: center;
-  &.fixedHeader {
-    margin-top: 20px;
-  }
+
   &:before {
     content: "";
     width: 100%;
@@ -768,6 +766,9 @@ footer {
   flex-flow: column;
   justify-content: space-between;
   cursor: pointer;
+  &.goUp {
+    transform: translateY(-50%) scale(-1);
+  }
 }
 b {
   display: inline-block;
@@ -775,6 +776,12 @@ b {
 //*=========MEDIA QUERIES========*
 
 @media (max-height: 886px) {
+  .lithostroto .lithostroto--col:nth-child(3) > div {
+    margin-top: 20px;
+  }
+  .lithostroto .lithostroto--col:nth-child(3) img {
+    height: 23vh;
+  }
   .moire--logo img {
     height: 14vh;
   }
@@ -807,6 +814,49 @@ b {
     bottom: 10vh;
     left: 21vh;
   }
+  img.sdsd {
+    height: 30vh;
+    object-fit: contain;
+    object-position: center left;
+  }
+  .greek .infos {
+    padding-top: 10px;
+    padding-bottom: 0;
+  }
+  .greek .max-width {
+    align-items: flex-start;
+  }
+  .greek .infos > div:nth-child(2) {
+    font-size: 15px;
+  }
+  .lithostroto .lithostroto--header {
+    margin-top: 0;
+  }
+  .lithostroto .lithostroto--col:nth-child(2) .imgs img {
+    max-width: 100%;
+    height: 174px;
+    object-fit: contain;
+    margin-top: 25px;
+  }
+  .labart .labart--col:nth-child(2) > img:first-child {
+    height: 64vh;
+    object-fit: contain;
+  }
+  .labart .labart--col:nth-child(1) {
+    font-size: 14px;
+  }
+  .cave .mid {
+    font-size: 15px;
+  }
+  .intro--col {
+    padding: 20px;
+  }
+  .imgs.right img {
+    height: 32vh;
+  }
+  .imgs.left img {
+    width: 25vh;
+  }
 }
 .logoSection {
   display: flex;
@@ -817,6 +867,9 @@ b {
   margin-top: 50px;
   padding-top: 0 !important;
   padding-bottom: 0 !important;
+}
+#section1.fixedHeader {
+  margin-top: 80px;
 }
 @media (max-width: 768px) {
   .footerLast .max-width h3 + img {
@@ -879,9 +932,7 @@ b {
     width: auto !important;
     max-width: 100%;
   }
-  .intro.fixedHeader {
-    margin-top: 0;
-  }
+
   #leftMenu.active + .fixedBtn {
     left: 230px;
   }
