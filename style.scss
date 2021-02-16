@@ -222,8 +222,11 @@ section {
   color: #fff;
   position: relative;
   z-index: 1;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
   &.fixedHeader {
-    margin-top: 80px;
+    margin-top: 20px;
   }
   &:before {
     content: "";
@@ -805,8 +808,37 @@ b {
     left: 21vh;
   }
 }
-
+.logoSection {
+  display: flex;
+  width: 100%;
+  background-color: #fff;
+  height: 48px;
+  padding: 0 15px;
+  margin-top: 50px;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
 @media (max-width: 768px) {
+  header {
+    position: fixed;
+    &.fixed {
+      top: 0;
+      left: 0;
+      width: 100%;
+      padding-left: 0;
+      display: flex;
+      align-items: flex-start;
+      justify-content: flex-start;
+      .top-header {
+        display: flex;
+        width: 100%;
+        border-bottom: 0;
+      }
+    }
+    .fixedBtn {
+      display: none !important;
+    }
+  }
   img.sdsd {
     width: 100%;
     height: auto;
@@ -1080,6 +1112,9 @@ b {
   }
   section {
     overflow: hidden !important;
+    min-height: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
   }
   .indicators {
     display: none;
